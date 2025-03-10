@@ -13,10 +13,23 @@
 				"value": "during",
 				"type": "Text"
 			},
-			"tagline": {
-				"__TYPE__": "FieldContent",
-				"value": "whole",
-				"type": "Text"
+			"taglines": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"tagline",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "opinion",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": []

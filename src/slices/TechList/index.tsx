@@ -8,7 +8,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Heading from "@/components/Heading";
-import Bounded from "@/components/Bounded";
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -24,7 +23,7 @@ const TechList: FC<TechListProps> = ({ slice }) => {
   const component = useRef(null)
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -66,11 +65,13 @@ const TechList: FC<TechListProps> = ({ slice }) => {
       className="overflow-hidden"
       ref={component}
     >
-      <Bounded as="div">
+      <article className="px-4 py-10 md:px-6 md:py-14 lg:py-16">
+      <div className="mx-auto w-full max-w-7xl">
         <Heading size="xl" className="mb-8" as="h2">
           {slice.primary.heading}
         </Heading>
-      </Bounded>
+      </div>
+      </article>
 
       {slice.primary.tech?.map(({ tech_color, tech_name }, index) => (
         <div

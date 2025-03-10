@@ -25,14 +25,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-slate-900 text-slate-100">
-      <body className={clsx(urbanist.className, "relative min-h-screen")}>
+    <html lang="en" className="bg-zinc-900 text-slate-100">
+      <body className={clsx(urbanist.className, "relative min-h-screen pt-1")}>
         <Header />
         {children}
         <Footer />
         <div className="absolute inset-0 -z-50 max-h-screen background-gradient"></div>
-        <div className="absolute pointer-events-none inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] *:
-        opacity-20 mix-blend-soft-light"></div>
+        <div className="absolute pointer-events-none inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
         {/* <div className="h-[500vh]"></div> */}
       </body>
       <PrismicPreview repositoryName={repositoryName} />

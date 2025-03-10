@@ -26,11 +26,20 @@
             "placeholder": "Smith"
           }
         },
-        "tagline": {
-          "type": "Text",
+        "taglines": {
+          "type": "Group",
           "config": {
-            "label": "Tagline",
-            "placeholder": "Tagline"
+            "label": "Taglines",
+            "repeat": true,
+            "fields": {
+              "tagline": {
+                "type": "Text",
+                "config": {
+                  "label": "Tagline",
+                  "placeholder": ""
+                }
+              }
+            }
           }
         }
       },

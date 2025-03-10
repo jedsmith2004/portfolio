@@ -3,7 +3,6 @@
 import { asImageSrc, Content, isFilled } from "@prismicio/client"
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react"
-import { BiWindowOpen } from "react-icons/bi";
 import { MdArrowOutward } from "react-icons/md";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -34,8 +33,8 @@ export default function ContentList({
     const urlPrefix = contentType === "Blog" ? "/blog" : "/projects";
 
     useEffect(()=>{
-        let ctx = gsap.context(()=>{
-            itemsRef.current.forEach((item, index)=>{
+        const ctx = gsap.context(()=>{
+            itemsRef.current.forEach((item)=>{
                 gsap.fromTo(item, 
                 {
                     opacity: 0,
@@ -66,7 +65,7 @@ export default function ContentList({
           // Calculate speed and direction
           const speed = Math.sqrt(Math.pow(mousePos.x - lastMousePos.current.x, 2));
     
-          let ctx = gsap.context(() => {
+          const ctx = gsap.context(() => {
             // Animate the image holder
             if (currentItem !== null) {
               const maxY = window.scrollY + window.innerHeight - 350;
@@ -139,7 +138,7 @@ export default function ContentList({
                             >
                                 <div className="flex flex-col">
                                     <span className="text-3xl font-bold">{item.data.title}</span>
-                                    <div className="flex gap-3 text-yellow-400 text-lg font-bold">
+                                    <div className="flex gap-3 text-red-500 text-lg font-bold">
                                         {item.tags.map((tag, tagIndex) => (
                                             <span key={tagIndex}>{tag}</span>
                                         ))}

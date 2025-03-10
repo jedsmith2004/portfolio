@@ -788,6 +788,21 @@ export type ExperienceSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Hero → Default → Primary → Taglines*
+ */
+export interface HeroSliceDefaultPrimaryTaglinesItem {
+  /**
+   * Tagline field in *Hero → Default → Primary → Taglines*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.taglines[].tagline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tagline: prismic.KeyTextField;
+}
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -812,14 +827,14 @@ export interface HeroSliceDefaultPrimary {
   last_name: prismic.KeyTextField;
 
   /**
-   * Tagline field in *Hero → Default → Primary*
+   * Taglines field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Text
-   * - **Placeholder**: Tagline
-   * - **API ID Path**: hero.default.primary.tagline
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.taglines[]
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  tagline: prismic.KeyTextField;
+  taglines: prismic.GroupField<Simplify<HeroSliceDefaultPrimaryTaglinesItem>>;
 }
 
 /**
@@ -1070,6 +1085,7 @@ declare module "@prismicio/client" {
       ExperienceSliceVariation,
       ExperienceSliceDefault,
       HeroSlice,
+      HeroSliceDefaultPrimaryTaglinesItem,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
