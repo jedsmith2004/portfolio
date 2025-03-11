@@ -9,7 +9,7 @@
     "lint": "next lint",
     "slicemachine": "start-slicemachine",
     "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "npm run pages:build && wrangler pages dev",
+    "preview": "npm run pages:build && wrangler pages dev --port 8788",
     "deploy": "npm run pages:build && wrangler pages deploy"
   },
   "dependencies": {
@@ -31,6 +31,8 @@
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.9",
     "@eslint/eslintrc": "^3",
+    "@next/bundle-analyzer": "^15.2.1",
+    "@opennextjs/cloudflare": "^0.5.10",
     "@slicemachine/adapter-next": "^0.3.67",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20",
