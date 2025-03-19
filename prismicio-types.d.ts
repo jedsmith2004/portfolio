@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BlogPostDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
+type BlogPostDocumentDataSlicesSlice =
+  | CodeBlockSlice
+  | ImageBlockSlice
+  | TextBlockSlice;
 
 /**
  * Content for Blog Post documents
@@ -232,7 +235,10 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-type ProjectDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
+type ProjectDocumentDataSlicesSlice =
+  | CodeBlockSlice
+  | ImageBlockSlice
+  | TextBlockSlice;
 
 /**
  * Content for Project documents
@@ -598,6 +604,62 @@ type BiographySliceVariation = BiographySliceDefault;
 export type BiographySlice = prismic.SharedSlice<
   "biography",
   BiographySliceVariation
+>;
+
+/**
+ * Primary content in *CodeBlock → Default → Primary*
+ */
+export interface CodeBlockSliceDefaultPrimary {
+  /**
+   * Code field in *CodeBlock → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: code_block.default.primary.code
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  code: prismic.RichTextField;
+
+  /**
+   * Language field in *CodeBlock → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: python
+   * - **API ID Path**: code_block.default.primary.language
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  language: prismic.SelectField<"python" | "javascript", "filled">;
+}
+
+/**
+ * Default variation for CodeBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CodeBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CodeBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CodeBlock*
+ */
+type CodeBlockSliceVariation = CodeBlockSliceDefault;
+
+/**
+ * CodeBlock Shared Slice
+ *
+ * - **API ID**: `code_block`
+ * - **Description**: CodeBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CodeBlockSlice = prismic.SharedSlice<
+  "code_block",
+  CodeBlockSliceVariation
 >;
 
 /**
@@ -1075,6 +1137,10 @@ declare module "@prismicio/client" {
       BiographySliceDefaultPrimary,
       BiographySliceVariation,
       BiographySliceDefault,
+      CodeBlockSlice,
+      CodeBlockSliceDefaultPrimary,
+      CodeBlockSliceVariation,
+      CodeBlockSliceDefault,
       ContentIndexSlice,
       ContentIndexSliceDefaultPrimary,
       ContentIndexSliceVariation,

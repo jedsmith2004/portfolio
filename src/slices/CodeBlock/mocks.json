@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"code": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Excepteur ex adipisicing et cillum in in do officia sunt Lorem ex veniam ut. Magna incididunt irure occaecat mollit proident fugiat cillum eu deserunt veniam et id. Fugiat deserunt fugiat non eu enim exercitation irure ex ut tempor voluptate irure officia in irure."
+						}
+					}
+				]
+			},
+			"language": {
+				"__TYPE__": "FieldContent",
+				"value": "javascript",
+				"type": "Select"
+			}
+		},
+		"items": []
+	}
+]
